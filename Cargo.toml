@@ -1,0 +1,9 @@
+[package]
+name = "result-extensions"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[dev-dependencies]
+thiserror = "1.0.40"
