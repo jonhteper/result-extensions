@@ -27,6 +27,10 @@ where
 
         Err(self.result.err().unwrap())
     }
+
+    pub fn throw<E2: std::error::Error>(self, f: impl FnOnce() -> E2) -> Result<T, E2> {
+        Err(f())
+    }
 }
 
 impl<T, E> WhenErrExtension<T, E> for Result<T, E>
