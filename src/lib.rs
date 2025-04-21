@@ -125,5 +125,13 @@ mod tests {
                 .run(|| executor.should_fail_with_a()),
             Ok(ReturnType)
         );
+
+        assert_eq!(
+            executor
+                .should_fail_with_a()
+                .when_err(|e| matches!(e, Error::A))
+                .throw(|| Error::B),
+            Err(Error::B)
+        );
     }
 }

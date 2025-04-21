@@ -29,6 +29,10 @@ where
     }
 
     pub fn throw<E2: std::error::Error>(self, f: impl FnOnce() -> E2) -> Result<T, E2> {
+        if let Ok(v) = self.result {
+            return Ok(v);
+        }
+
         Err(f())
     }
 }
